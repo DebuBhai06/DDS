@@ -1,0 +1,55 @@
+#include<iostream>
+using namespace std;
+
+struct node{
+    int data ;
+    node*left;
+    node*right;
+    node(int val){
+        data=val;
+        left=nullptr;
+        right=nullptr;
+    }
+};
+
+void Inorder (node*root){
+    if(root){
+        cout<<root->data<<" ";
+        Inorder(root->left);
+        Inorder(root->right);
+        
+    }
+}
+
+void Preorder(node*root){
+    if(root){
+        Preorder(root->left);
+        cout<<root->data<<" ";
+        Preorder(root->right);
+    }
+}
+void Postorder(node*root){
+    if (root){
+        Postorder(root->left);
+        Postorder(root->right);
+        cout<<root->data;
+    }
+}
+
+int main(){
+    node*root=new node(2);
+    root->left=new node(3);
+    root->right=new node(4);
+    root->left->left=new node(5);
+    root->left->right=new node(6);
+    root->right->left=new node(7);
+    root->right->right=new node(8);
+    cout<<"inorder:";
+    Inorder(root);
+    cout<<endl;
+    cout<<"preorder:";
+    Preorder(root);
+    cout<<endl;
+    cout<<"postorder;";
+    Postorder(root);
+}
